@@ -1,0 +1,19 @@
+# Python virtual environment
+venv/
+.venv/
+
+# Python caches
+__pycache__/
+*.pyc
+
+# IDE and OS files
+.idea/
+.vscode/
+.DS_Store
+
+# Secrets and environment variables
+.env
+
+# Large data files and indexes
+documents/
+vector_store/
