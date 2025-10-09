@@ -1,0 +1,7 @@
+llama-index
+llama-index-embeddings-nebius
+llama-index-vector-stores-chroma  
+pypdf
+sentence-transformers
+chromadb        
+python-dotenv
