@@ -5,3 +5,5 @@ pypdf
 sentence-transformers
 chromadb        
 python-dotenv
+yfinance
+llama-index-llms-nebius

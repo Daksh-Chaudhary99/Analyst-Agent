@@ -72,7 +72,7 @@ def main():
         storage_context=storage_context,
         show_progress=True
     )
-
+    
     logging.info("✅ Ingestion complete! Vector index is persisted in ChromaDB.")
     logging.info(f"✅ Vector store location: {os.path.abspath(VECTOR_STORE_PATH)}")
 
