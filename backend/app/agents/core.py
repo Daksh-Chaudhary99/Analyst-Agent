@@ -35,16 +35,18 @@ class AnalystAgent:
         # Initialize the Agent LLM
         llm = NebiusLLM(
             api_key=os.environ["NEBIUS_API_KEY"],
-            model_name=AGENT_LLM_MODEL,
+            model=AGENT_LLM_MODEL,
             api_base="https://api.studio.nebius.com/v1/",
-            temperature=0.0
         )
 
         # Create and return the ReAct Agent
-        return ReActAgent.from_tools(tools=tools, llm=llm, verbose=True)
+        return ReActAgent(tools=tools, llm=llm, verbose=True)
 
-    def query(self, question: str):
-        return self.agent.chat(question)
+    # def query(self, question: str):
+    #     return self.agent.run(question)
+
+    async def query(self, question: str):
+        return await self.agent.run(question)
 
 # --- Singleton Instance ---
 analyst_agent = AnalystAgent()

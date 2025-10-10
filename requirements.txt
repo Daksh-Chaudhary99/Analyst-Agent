@@ -7,3 +7,5 @@ chromadb
 python-dotenv
 yfinance
 llama-index-llms-nebius
+fastapi
+uvicorn[standard]
