@@ -16,11 +16,6 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# @app.post("/query", response_model=QueryResponse)
-# def handle_query(request: QueryRequest):
-#     agent_response = rag_service.query(request.question)
-#     return QueryResponse(response=str(agent_response))
-
 @app.post("/query", response_model=QueryResponse)
 async def handle_query(request: QueryRequest):
     agent_response = await rag_service.query(request.question)

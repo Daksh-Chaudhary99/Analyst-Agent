@@ -9,3 +9,5 @@ yfinance
 llama-index-llms-nebius
 fastapi
 uvicorn[standard]
+streamlit
+requests
