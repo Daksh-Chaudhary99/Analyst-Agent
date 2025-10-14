@@ -7,7 +7,7 @@ st.set_page_config(page_title="SEDAR+ Analyst Agent", page_icon="🤖")
 st.title("SEDAR+ Analyst Agent")
 
 # FastAPI endpoint URL
-API_URL = "http://backend:8000/query"
+API_URL = "http://backend-service:8000/query"
 
 # --- Session State Management ---
 # Initialize chat history

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-deployment
+  namespace: analyst-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ui
+  template:
+    metadata:
+      labels:
+        app: ui
+    spec:
+      containers:
+        - name: ui
+          image: analyst-agent-ui:0.1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8501
+          volumeMounts:
+            - name: ui-code
+              mountPath: /app
+      volumes:
+        - name: ui-code
+          hostPath:
+            path: /frontend-code 
