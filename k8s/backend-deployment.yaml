@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: analyst-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: analyst-agent-backend:0.1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - secretRef:
+                name: nebius-credentials
+          volumeMounts:
+            - name: vector-store-storage
+              mountPath: /app/vector_store
+      volumes:
+        - name: vector-store-storage
+          persistentVolumeClaim:
+            claimName: vector-store-pvc

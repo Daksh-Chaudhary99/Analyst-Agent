@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ingest-job
+  namespace: analyst-agent
+spec:
+  template:
+    spec:
+      containers:
+        - name: ingester
+          image: analyst-agent-ingester:0.1.0
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - secretRef:
+                name: nebius-credentials
+          volumeMounts:
+            - name: vector-store-storage
+              mountPath: /app/vector_store
+      volumes:
+        - name: vector-store-storage
+          persistentVolumeClaim:
+            claimName: vector-store-pvc
+      restartPolicy: Never
+  backoffLimit: 4
